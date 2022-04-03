@@ -17,7 +17,7 @@ public class InternationalNumberMatcherTest {
 
     @ParameterizedTest
     @MethodSource("paramTestInputTrue")
-    public void should_return_true_when_match(final String userNumber, final Integer countryCode) {
+    public void should_return_true_when_user_number_match(final String userNumber, final Integer countryCode) {
         Assertions.assertTrue(InternationalNumberMatcher.isMatch(userNumber, countryCode));
     }
 
