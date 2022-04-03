@@ -52,7 +52,7 @@ public class NumberParser {
     private String parseLocalNumber(final String countryCode,final String dialledNumber) {
         final String localDialingCode = this.nationalTrunkPrefixes.get(countryCode);
          if(dialledNumber.startsWith(localDialingCode)) {
-             String output = INTERNATIONAL_NUMBER_PREFIX + this.countryCodes.get(countryCode) + dialledNumber.substring(1);
+             String output = INTERNATIONAL_NUMBER_PREFIX + this.countryCodes.get(countryCode) + dialledNumber.substring(localDialingCode.length());
              logger.info("Parsed dialled number to {}.", output);
              return output;
          }
