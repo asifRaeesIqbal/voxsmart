@@ -36,7 +36,7 @@ public class NumberParser {
             logger.debug("Determine country code from user number.");
             final String countryCode = findCountryCode(dialledNumber, userNumber);
             logger.debug("Country code for user number is {}.", countryCode);
-            return parseLocalNumber(countryCode, dialledNumber);
+            return parseNumber(countryCode, dialledNumber);
         }
     }
 
@@ -49,7 +49,7 @@ public class NumberParser {
                 .orElseThrow(() -> new IllegalStateException("No Country set for dialled user number"));
     }
 
-    private String parseLocalNumber(final String countryCode,final String dialledNumber) {
+    private String parseNumber(final String countryCode, final String dialledNumber) {
         final String localDialingCode = this.nationalTrunkPrefixes.get(countryCode);
          if(dialledNumber.startsWith(localDialingCode)) {
              String output = INTERNATIONAL_NUMBER_PREFIX + this.countryCodes.get(countryCode) + dialledNumber.substring(localDialingCode.length());
